@@ -16,13 +16,13 @@ exports.keepTwoDecimals = function (number) {
   return Math.round(100 * number) / 100
 }
 
-exports.toTwoDecimals = function(number) {
+exports.toTwoDecimals = function (number) {
   let newNumber = parseFloat(number)
   if (isNaN(newNumber)) {
     newNumber = 0
   }
   return newNumber.toFixed(2)
-},
+}
 
 exports.keepFourDecimals = function (number) {
   return Math.round(10000 * number) / 10000

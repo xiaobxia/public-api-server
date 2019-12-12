@@ -19,4 +19,9 @@ router.get('/', async function (ctx) {
   ctx.body = 'ok'
 })
 
+/**
+ * 城市接口模块
+  */
+router.get('/city/getDistrictByCode', controllers.cityController.getDistrictByCode)
+
 module.exports = router

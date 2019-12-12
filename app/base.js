@@ -8,7 +8,6 @@ const jwt = require('jsonwebtoken')
 const fs = require('fs-extra')
 const Parameter = require('./lib/validate')
 const schedules = require('./schedules/inedx')
-const tableFields = require('./models/tableFields')
 
 const parameter = new Parameter()
 
@@ -170,26 +169,5 @@ module.exports = function (app) {
       start: (index - 1) * size,
       offset: size
     }
-  }
-  // 字段
-  content.tableFields = tableFields
-  function formatFields (fields, rawData) {
-    let data = {}
-    for (let i = 0; i < fields.length; i++) {
-      const key = fields[i].field
-      let alias = fields[i].alias
-      let format = fields[i].format
-      let value = rawData[key]
-      data[alias || key] = format ? format(value) : value
-    }
-    return data
-  }
-  content.formatFields = formatFields
-  content.formatListFields = function (fields, rawList) {
-    let data = []
-    for (let i = 0; i < rawList.length; i++) {
-      data.push(formatFields(fields, rawList[i]))
-    }
-    return data
   }
 }

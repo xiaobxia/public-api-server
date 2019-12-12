@@ -6,6 +6,8 @@ const CityModel = models.City
  * 基本
  */
 
+const field = { _id: 0, create_at: 0, __v: 0 }
+
 exports.CityModel = CityModel
 
 exports.newAndSave = function (data) {
@@ -24,15 +26,15 @@ exports.update = function (query, data) {
 }
 
 exports.find = function (query, opt) {
-  return CityModel.find(query, {}, opt)
+  return CityModel.find(query, field, opt)
 }
 
-exports.findOne = function (query) {
-  return CityModel.findOne(query)
+exports.findOne = function (query, opt) {
+  return CityModel.findOne(query, field, opt)
 }
 
 exports.findOneById = function (id) {
-  return CityModel.findById(id)
+  return CityModel.findById(id, field)
 }
 
 exports.check = function (query, opt) {
